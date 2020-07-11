@@ -1,27 +1,81 @@
-# MadcatKanjivgNg
+# KanjiVG (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+Angular components for [KanjiVG](https://github.com/KanjiVG/kanjivg)
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## using Angular CLI
 
-## Build
+`ng add @madcat/kanjivg-ng`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## manually
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. `npm install @madcat/kanjivg @madcat/kanjivg-ng`
+2. in `angular.json` add KanjiVG assets:
+```json
+{
+  "projects": {
+    "your-project": {
+      "architect": {
+        "build": {
+          "assets": [
+            {
+              "glob": "*.svg",
+              "input": "node_modules/@madcat/kanjivg/dist/min/main",
+              "output": "kanjivg"
+            }
+          ]
+        },
 
-## Running end-to-end tests
+        "test": {
+          "assets": [
+            {
+              "glob": "*.svg",
+              "input": "node_modules/@madcat/kanjivg/dist/min/main",
+              "output": "kanjivg"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Licence
+
+1. KanjiVG is copyright Ulrich Apel and released under the Creative Commons Attribution-Share Aline 3.0 licence
+2. `@madcat/kanjivg-ng` is copyright Michał Kurcius and released under the Creative Commons Attribution-Share Aline 3.0 licence
+
+http://creativecommons.org/licenses/by-sa/3.0/
+
+See the [LICENSE](./LICENSE) file for more details.
+
+
+
+# Development
+To build run `npm run build`. 
+
+Under the hood this command will build angular components and schematics. 
+Additionally, it will also copy `README.md` and `LICENCE` to `dist/kanjivg-ng` dir.
+
+## NOTICE
+Running `ng build` may be sufficient for development,
+but will not create final deployable package (schematics, `README.md` and `LICENCE` will not be included).
+
+
+
+# Publishing
+To publish run `npm run deploy`.
+Before publishing `npm version major|minor|patch` should be ran.
+
+## NOTICE
+`npm publish` will throw an error: `Use 'npm run deploy' to publish this package`.
+This is by design, because only generated `dist/kanjivg-ng` should be published and `npm run deploy` will do it!
+

@@ -1,0 +1,24 @@
+{
+  "name": "@madcat/kanjivg-ng",
+  "version": "0.0.0-PLACEHOLDER",
+  "scripts": {
+    "build": "run-s build:kanjivg-ng build:schematics",
+    "build:kanjivg-ng": "ng build kanjivg-ng --prod",
+    "build:schematics": "run-s schematics:compile schematics:copy",
+    "schematics:compile": "tsc -p tsconfig.schematics.json",
+    "schematics:copy": "run-p schematics:copy:*",
+    "schematics:copy:schemas": "cpy schematics/*/schema.json ../../dist/kanjivg-ng/",
+    "schematics:copy:files": "cpy schematics/*/files/** ../../dist/kanjivg-ng/",
+    "schematics:copy:collection": "cpy schematics/collection.json ../../dist/kanjivg-ng/schematics/"
+  },
+  "peerDependencies": {
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "@madcat/kanjivg": "^2.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "license": "CC BY-SA 3.0",
+  "schematics": "./schematics/collection.json"
+}

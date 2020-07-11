@@ -6,5 +6,15 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/kanjivg-ng/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/kanjivg-ng/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/demo/tsconfig.json"
+    }
+]
 }
